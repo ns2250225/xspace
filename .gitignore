@@ -1,0 +1,43 @@
+# Node / Vite
+node_modules/
+dist/
+.vite/
+*.tsbuildinfo
+
+# Rust / Tauri 构建产物
+src-tauri/target/
+target/
+
+# 本地环境与日志
+.env
+.env.*
+!.env.example
+*.log
+npm-debug.log*
+yarn-debug.log*
+pnpm-debug.log*
+
+# 编辑器与系统文件
+.idea/
+.vscode/
+*.swp
+*.swo
+.DS_Store
+Thumbs.db
+Desktop.ini
+
+# 临时文件
+*.tmp
+*.temp
+*.bak
+*.part
+
+# 本地工作区数据与安装包
+*.db
+*.db-shm
+*.db-wal
+*.canvaspack
+*.msi
+*.msix
+*.exe
+

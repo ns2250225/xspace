@@ -1,0 +1,10 @@
+use serde::{Deserialize,Serialize};
+#[derive(Debug,Clone,Serialize,Deserialize)]pub struct WorkspaceInfo{pub path:String,pub name:String,pub last_opened:Option<i64>}
+#[derive(Debug,Clone,Serialize,Deserialize)]pub struct Canvas{pub id:String,pub name:String,pub camera_x:f64,pub camera_y:f64,pub zoom:f64,pub created_at:i64,pub updated_at:i64,pub deleted_at:Option<i64>}
+#[derive(Debug,Clone,Serialize,Deserialize)]pub struct Asset{pub id:String,#[serde(rename="type")]pub kind:String,pub original_name:String,pub storage_name:String,pub extension:String,pub mime_type:String,pub size:i64,pub hash:String,pub width:Option<i64>,pub height:Option<i64>,pub duration:Option<f64>,pub thumbnail_path:Option<String>,pub created_at:i64,pub updated_at:i64,pub deleted_at:Option<i64>,pub usage_count:Option<i64>}
+#[derive(Debug,Clone,Serialize,Deserialize)]pub struct Node{pub id:String,pub canvas_id:String,pub asset_id:Option<String>,#[serde(rename="type")]pub kind:String,pub x:f64,pub y:f64,pub width:f64,pub height:f64,pub rotation:f64,pub z_index:i64,pub title:String,pub content_json:String,pub style_json:String,pub created_at:i64,pub updated_at:i64,pub deleted_at:Option<i64>}
+#[derive(Debug,Clone,Serialize,Deserialize)]pub struct Edge{pub id:String,pub canvas_id:String,pub source_node_id:String,pub target_node_id:String,#[serde(rename="type")]pub kind:String,pub label:String,pub style_json:String,pub created_at:i64,pub updated_at:i64}
+#[derive(Debug,Clone,Serialize,Deserialize)]pub struct Group{pub id:String,pub canvas_id:String,pub name:String,pub node_ids:Vec<String>}
+#[derive(Debug,Serialize)]pub struct WorkspaceData{pub workspace:WorkspaceInfo,pub canvases:Vec<Canvas>,pub nodes:Vec<Node>,pub assets:Vec<Asset>,pub edges:Vec<Edge>,pub groups:Vec<Group>,pub recovery_needed:bool}
+#[derive(Debug,Serialize)]pub struct ImportResult{pub asset:Asset,pub deduplicated:bool}
+#[derive(Debug,Serialize)]pub struct SearchResult{pub kind:String,pub id:String,pub canvas_id:Option<String>,pub title:String,pub subtitle:String,pub x:Option<f64>,pub y:Option<f64>}
