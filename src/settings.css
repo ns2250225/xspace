@@ -1,6 +1,8 @@
 .canvas{background-size:var(--canvas-grid-size,24px) var(--canvas-grid-size,24px)}
 .canvas-tools button:disabled{opacity:.32;cursor:not-allowed;background:none;color:inherit}
 .app-shell>.inspector{display:none!important}
+.app-shell{grid-template-columns:218px minmax(0,1fr)}
+.app-shell:not(:has(>.sidebar)){grid-template-columns:minmax(0,1fr)}
 .settings-shade{position:fixed;inset:0;z-index:1000;display:grid;place-items:center;padding:24px;background:#211d2966;backdrop-filter:blur(8px)}
 .settings-dialog{width:min(520px,94vw);overflow:hidden;border:1px solid #ded9e4;border-radius:18px;background:#fff;color:#292631;box-shadow:0 32px 120px #0006}
 .settings-dialog header{display:flex;align-items:flex-start;justify-content:space-between;padding:24px 26px 18px;border-bottom:1px solid #ebe8ed}
