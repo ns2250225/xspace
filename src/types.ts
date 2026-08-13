@@ -1,4 +1,4 @@
-export type NodeType='text'|'image'|'video'|'audio'|'file'|'link'|'frame'|'pdf'|'markdown'|'code';
+export type NodeType='text'|'todo'|'image'|'video'|'audio'|'file'|'link'|'frame'|'pdf'|'markdown'|'code';
 export interface WorkspaceInfo {path:string;name:string;lastOpened?:number}
 export interface Canvas {id:string;name:string;camera_x:number;camera_y:number;zoom:number;created_at:number;updated_at:number;deleted_at?:number|null}
 export interface Asset {id:string;type:string;original_name:string;storage_name:string;extension:string;mime_type:string;size:number;hash:string;width?:number;height?:number;duration?:number;thumbnail_path?:string;created_at:number;updated_at:number;deleted_at?:number|null;usage_count?:number}

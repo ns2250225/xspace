@@ -3,5 +3,6 @@ import { createPinia } from 'pinia';
 import App from './App.vue';
 import './style.css';
 import './settings.css';
+import './todo.css';
 import 'highlight.js/styles/github-dark.css';
 createApp(App).use(createPinia()).mount('#app');
