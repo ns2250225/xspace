@@ -1833,7 +1833,7 @@ dependencies = [
 
 [[package]]
 name = "infinite-canvas"
-version = "0.1.7"
+version = "0.1.8"
 dependencies = [
  "chrono",
  "mime_guess",
