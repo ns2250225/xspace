@@ -27,6 +27,7 @@ export const backend={
   openAsset:(assetId:string)=>call<void>('open_asset',{assetId},()=>{}),
   openUrl:(url:string)=>call<void>('open_url',{url},()=>{window.open(url,'_blank')}),
   assetText:(assetId:string)=>call<string>('asset_text',{assetId},()=>''),
+  renameAsset:(assetId:string,name:string)=>call<void>('rename_asset',{assetId,name},()=>{const asset=local.assets.find(a=>a.id===assetId);if(asset)asset.original_name=name;local.nodes.filter(n=>n.asset_id===assetId).forEach(n=>n.title=name);saveLocal(local)}),
   saveEdges:(edges:Edge[])=>call<void>('save_edges',{edges},()=>{local.edges=edges;saveLocal(local)}),
   deleteEdges:(ids:string[])=>call<void>('delete_edges',{ids},()=>{local.edges=local.edges.filter(e=>!ids.includes(e.id));saveLocal(local)}),
   saveGroups:(groups:Group[])=>call<void>('save_groups',{groups},()=>{local.groups=groups;saveLocal(local)}),

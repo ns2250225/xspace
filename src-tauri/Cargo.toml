@@ -1,6 +1,6 @@
 [package]
 name="infinite-canvas"
-version="0.1.4"
+version="0.1.5"
 description="Local-first infinite spatial canvas"
 edition="2021"
 [lib]
@@ -21,3 +21,4 @@ mime_guess="2"
 pdf-extract="0.7"
 chrono="0.4"
 thiserror="2"
+tauri-plugin-global-shortcut = "2"

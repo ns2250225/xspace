@@ -71,10 +71,11 @@ npm run dev
 
 ## Windows Release 构建
 
-推荐直接运行项目内的构建脚本：
+仅构建单一裸 EXE（不生成安装程序）：
 
 ```powershell
-.\build-windows.cmd
+$env:Path="$env:USERPROFILE\.cargo\bin;$env:Path"
+npm run tauri -- build --no-bundle
 ```
 
 构建结果：
@@ -113,11 +114,17 @@ MyWorkspace/
 | 搜索 | `Ctrl + K` |
 | 全选 | `Ctrl + A` |
 | 删除 | `Delete` |
-| 分组 | `Ctrl + G` |
 | 复制节点 | `Ctrl + D` |
+| 隐藏/呼出软件 | `Ctrl + Shift + Space`（全局快捷键） |
+| 粘贴链接 | 复制 URL 后按 `Ctrl + V`，自动创建链接卡片 |
+| 粘贴文字 | 复制文字后按 `Ctrl + V`，自动创建文字卡片 |
+| 粘贴图片/截图 | 复制图片或截图后按 `Ctrl + V`，自动托管并创建图片卡片 |
+| 重命名文件 | 右键文件卡片，选择“重命名文件名” |
 | 图片预览 | 双击图片 |
 | 打开链接 | 双击链接卡片 |
 | 打开文件 | 双击文件卡片 |
+
+`Ctrl + Shift + Space` 使用系统级全局快捷键注册，因此软件窗口隐藏后仍可再次呼出。如果该组合已被其他软件占用，需要先释放冲突的快捷键。
 
 ## 数据安全
 
@@ -154,4 +161,3 @@ npm run build
 ## 开源协议
 
 当前仓库暂未声明开源许可证。如需分发或二次使用，请先联系项目维护者。
-
