@@ -10,6 +10,7 @@ use std::{
     sync::Mutex,
 };
 use tauri::{Manager, State};
+use tauri_plugin_dialog::DialogExt;
 use tauri_plugin_global_shortcut::{Code, GlobalShortcutExt, Modifiers, Shortcut, ShortcutState};
 use uuid::Uuid;
 struct AppState(Mutex<Option<PathBuf>>);
@@ -568,9 +569,16 @@ pub fn run() {
                 .build(),
         )
         .setup(move |app| {
-            app.global_shortcut()
-                .register(shortcut)
-                .map_err(|e| format!("无法注册 Ctrl+Shift+Space 全局快捷键: {e}"))?;
+            // 全局快捷键被其他程序占用时不应导致应用启动失败（闪退），
+            // 这里降级为提示并继续启动：隐藏/呼出功能暂时不可用。
+            if let Err(e) = app.global_shortcut().register(shortcut) {
+                let msg = format!(
+                    "无法注册全局快捷键 Ctrl+Shift+Space（可能已被其他程序占用），\
+                     隐藏/呼出功能暂不可用，应用可正常使用。\n\n详细信息: {e}"
+                );
+                eprintln!("[warn] {msg}");
+                let _ = app.dialog().message(msg).title("Infinite Canvas 提示").show();
+            }
             Ok(())
         })
         .manage(AppState(Mutex::new(None)))
